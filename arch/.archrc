@@ -233,6 +233,10 @@ sudo pacman -S keepassx2
 # datamash?
 # gnu parallel
 
+	# ZSH #
+sudo pacman -S zsh zsh-completions
+
+
 # ssd optimization (may require compiling with linux flags...)
     - see also trim and fstab
 # bluetooth (turn that shit off!)
