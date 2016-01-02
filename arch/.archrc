@@ -87,7 +87,7 @@ yaourt -S rofi-git
 
 	# Compton #
 # ensure you edit the compton.conf file and add the relevant commands to .i3/conf 
-yaourt -S compton-git	
+yaourt -S compton-git
 
 	# UXRVT#
 # make sure that you add your options to the .Xresources
@@ -97,6 +97,9 @@ yaourt -S rxvt-unicode-patched
 
 # potential fix for fontawesome rendering
 https://www.reddit.com/r/unixporn/comments/3vaoi8/font_spacing_in_urxvt/
+
+        # Background #
+sudo pacman -S feh
 
 #####################################################################################
 #
@@ -228,7 +231,7 @@ yaourt -S ttf-inconsolata-g
 sudo pacman -S keepassx2
 
 	# DATAZ #
-# R/Rstudio??
+sudo pacman -S r gcc-fortran
 # agrep
 # datamash?
 # gnu parallel

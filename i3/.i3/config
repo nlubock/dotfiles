@@ -20,7 +20,7 @@
 
   set $workspace1 "1: "
   set $workspace2 "2: "
-  set $workspace3 "3: "
+  set $workspace3 "3: "
   set $workspace4 "4: "
   set $workspace5 "5: "
   set $workspace6 "6: "
@@ -42,7 +42,6 @@
   gaps outer 0
 
 # Window-Related Bindings
-  bindsym $mod+Shift+q kill
   bindsym $mod+h focus left
   bindsym $mod+j focus down
   bindsym $mod+k focus up
@@ -51,10 +50,12 @@
   bindsym $mod+Shift+j move down
   bindsym $mod+Shift+k move up
   bindsym $mod+Shift+l move right
+
   bindsym $mod+Shift+space floating toggle
   bindsym $mod+f fullscreen toggle
-  bindsym $mod+v layout toggle split
-  #bindsym $mod+h split h
+  bindsym $mod+Shift+q kill
+  bindsym $mod+v split v
+  bindsym $mod+z split h
   #bindsym $mod+space focus mode_toggle
   bindsym $mod+r mode "  "
   mode "  " {
@@ -65,16 +66,19 @@
     bindsym Escape mode "default"
   }
 
+# Layout-Related Bindings
+  bindsym $mod+e layout toggle split
+  bindsym $mod+w layout tabbed
+  bindsym $mod+s layout stacked
+
 # Restart-Related Bindings
   bindsym $mod+Shift+c reload
   bindsym $mod+Shift+r restart
 
 # Program-Related Bindings
-#  bindsym $mod+Shift+f exec chromium
   bindsym $mod+Return exec i3-sensible-terminal
   # bindsym $mod+d exec rofi -show run
   bindsym $mod+d exec rofi -show run -font '20' -lines 3 -eh 2 -opacity 80 -hide-scrollbar -width 100 -padding 250 -bw 0 -bc "#8FA1B3" -bg "#2b303b" -fg "#ffffff" -hlbg "#2b303b" -hlfg "#8FA1B3"
-#  bindsym --release Print exec imgur-screenshot
   bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
@@ -92,8 +96,6 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-# Startup Programs
 
 # Workspace-Related Bindings
   bindsym $mod+1 workspace $workspace1
@@ -133,7 +135,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Floating
   for_window [class="Lxappearance"] floating enable
-  for_window [class="Firefox"] floating enable
+  # for_window [class="Firefox"] floating enable
 
 
 # Widow Colours
@@ -164,4 +166,6 @@ bindsym XF86AudioPrev exec playerctl previous
     }
   }
 
-exec --no-startup-id compton -b
+# Startup
+exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec --no-startup-id feh --bg-fill --no-xinerama ~/.wallpaper
