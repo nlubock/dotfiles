@@ -1,10 +1,10 @@
-# This file should tell you how to configure everything for a nice minimal arch config 
+# This file should tell you how to configure everything for a nice minimal arch config
 
-#####################################################################################
+##########################################################################
 #
 # Get wifi working
 #
-#####################################################################################
+##########################################################################
 
 # ensure that you have the correct daemons (if you don't already)
 pacman -S dialog wpa_actiond ifplugd wpa_suppicant
@@ -17,36 +17,37 @@ wifi-menu
 # see the arch wiki for netctl (automatic switching for details)
 systemctl enable netctl-auto@wlps30.service
 
-#####################################################################################
+##########################################################################
 #
 # Get Xorg off the ground
 #
-#####################################################################################
+##########################################################################
 
 # get relevant xorg goodies
 sudo pacman -S xorg-server xorg-server-utils xorg-xinit xorg-twm xterm xorg-apps
 
-# make sure your drivers are kosher 
-sudo pacman -S xf86-video-intel mesa-libgl
+# make sure your drivers are kosher
+sudo pacman -S mesa-libgl
+# sudo pacman -S xf86-video-intel mesa-libgl # (intel drivers now considered harmful)
 
-# fix video tearing 
-touch /etc/X11/xorg.conf.d/20-intel.conf
+# fix video tearing
+# touch /etc/X11/xorg.conf.d/20-intel.conf
 
-# add the following lines:
-Section "Device"
-   Identifier  "Intel Graphics"
-   Driver      "intel"
-   Option      "NoTear"     "true"
-EndSection
+# # add the following lines:
+# Section "Device"
+#    Identifier  "Intel Graphics"
+#    Driver      "intel"
+#    Option      "NoTear"     "true"
+# EndSection
 
 # you're gonna want to use your mouse...
 sudo pacman -S xf86-input-libinput xf86-input-synaptics
 
-####################################################################################
-# 
-# AUR 
+##########################################################################
 #
-#####################################################################################
+# AUR
+#
+##########################################################################
 
 # get yaourt (MUST BE NON-ROOT!!)
 # first make a builds directory in your home
@@ -63,13 +64,35 @@ cd ..
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt
 makepkg -sri
-cd ~                                                                                 
+cd ~
+##########################################################################
+#
+# i3
+#
+##########################################################################
 
-#####################################################################################
+# install the group
+sudo pacman -S i3 i3lock i3status
+
+# add this to your ~/.xinitrc (below xbindkeys)
+exec i3
+
+# now install some additional goodies from the AUR!
+# NOTE - i3-gaps-next-git will remove i3wm
+yaourt -S i3blocks i3-gaps-next-git
+
+# manually start i3 with
+startx
+
+    # TODO #
+# auto-start
+
+
+##########################################################################
 #
 # RICE
 #
-#####################################################################################
+##########################################################################
 
 	# GTK #
 # lxappearance is a convenient gui to configure things without the bloat
@@ -86,7 +109,7 @@ https://github.com/horst3180/arc-firefox-theme/releases
 yaourt -S rofi-git
 
 	# Compton #
-# ensure you edit the compton.conf file and add the relevant commands to .i3/conf 
+# ensure you edit the compton.conf file and add the relevant commands to .i3/conf
 yaourt -S compton-git
 
 	# UXRVT#
@@ -101,11 +124,11 @@ https://www.reddit.com/r/unixporn/comments/3vaoi8/font_spacing_in_urxvt/
         # Background #
 sudo pacman -S feh
 
-#####################################################################################
+##########################################################################
 #
 # Get your periferals workings
 #
-#####################################################################################
+##########################################################################
 
 	# MOUSE #
 
@@ -119,24 +142,21 @@ Option "HorzTwoFingerScroll" "1"
 
 	# BRIGHTNESS #
 
-#### TODO ####
 # migrate these bindings to the .i3/conf file
 # this will be one less dotfile to worry about!
 # enable the screen brightness keys
-pacman -S xbindkeys
-xbindkeys -d > ~/.xbindkeysrc
-
-# edit the .xbindkeysrc to have the following lines:
-# increase brightness 10%
-"xbacklight -inc 10"
-   XF86MonBrightnesUp 
-
-# increase brightness 10%
-"xbacklight -dec 10"
-   XF86MonBrightnesDown 
-
-# now make sure this is above any start x in your ~/.xinitrc
-xbindkeys
+# pacman -S xbindkeys
+# xbindkeys -d > ~/.xbindkeysrc
+#
+# # edit the .xbindkeysrc to have the following lines:
+# "xbacklight -inc 10"
+#    XF86MonBrightnessUp
+#
+# "xbacklight -dec 10"
+#    XF86MonBrightnessDown
+#
+# # now make sure this is above any start x in your ~/.xinitrc
+# xbindkeys
 
 	# VOLUME #
 
@@ -150,58 +170,28 @@ audiotest -c 2
 	# BATTERIES/SENSORS #
 # detailed power information/etc
 sudo pacman -S acpi
-# sudo pacman -S lm-sensors 
+# sudo pacman -S lm-sensors
 # see also for nice i3blocks battery output
-#
 
-### TODO ####
+        # TODO #
 # install audio/video programs
 # get rid of annoying beep permanently!
-#	potentiall just use xset -b
-# get copy/paste workin 
+# potentiall just use xset -b
+# get copy/paste workin
 # multiple monitors (arandr?)
 
 
-#####################################################################################
-# 
-# i3
-#
-#####################################################################################
-
-# install the group
-sudo pacman -S i3 i3lock i3status
-
-# install dmenu (maybe optional??)
-# sudo pacman -S dmenu
-
-# install rofi
-yaourt -S rofi-git
-
-# add this to your ~/.xinitrc (below xbindkeys)
-exec i3
-
-# now install some additional goodies from the AUR!
-# NOTE - i3-gaps-next-git will remove i3wm
-yaourt -S i3blocks i3-gaps-next-git
-
-# manually start i3 with
-startx
-
-#### TODO ####
-# auto-start
-
-#####################################################################################
+##########################################################################
 #
 # Misc
 #
-#####################################################################################
+##########################################################################
 
 	# PRODUCTIVITY #
 
 sudo pacman -S vim
 sudo pacman -S git openssh wget htop tree
 sudo pacman -S stow
-# gnu stow for dotfiles?
 # slack command line goodies?
 
 	# INTERWEBZ #
@@ -215,11 +205,16 @@ yaourt -S playerctl # optional dependency with i3blocks
 # soundcloud cmdline goodies
 
 	# FONTS #
+# get rid of bitmap fonts
+# note you may need to get rid of 70-yes-bitmaps.conf
+sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
+#
 # icons/etc
 yaourt -S ttf-font-awesome
 sudo pacman -S noto-fonts-emoji
 
 # real fonts
+sudo pacman -S ttf-dejavu ttf-liberation
 yaourt -S ttf-inconsolata-g
 # adobe source code pro
 # adobe source sans pro
@@ -232,6 +227,7 @@ sudo pacman -S keepassx2
 
 	# DATAZ #
 sudo pacman -S r gcc-fortran
+sudo pacman -S python ipython python-pip
 # agrep
 # datamash?
 # gnu parallel

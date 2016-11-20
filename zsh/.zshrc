@@ -34,6 +34,7 @@ alias kls='ls'
 # fun
 alias please='sudo $(fc -ln -1)'
 
+alias tre-agrep='agrep'
 
 #######################################################################
 #	KEY BINDINGS

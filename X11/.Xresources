@@ -18,7 +18,8 @@ rofi.line-margin: 5
 rofi.font: Inconsolata-g 18
 rofi.opacity: 80
 
-
+! URxvt.transparent:                    true
+! URxvt:shading:20
 URxvt*background:                     #151718
 URxvt*foreground:                     #d6d6d6
 URxvt*cursorColor:                    #d6d6d6

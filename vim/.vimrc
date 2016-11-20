@@ -50,16 +50,23 @@ set novisualbell
 " Strip whitespace from the end of all files
 autocmd BufWritePre * :%s/\s\+$//e
 
+" transperancy options
+hi Normal guibg=NONE ctermbg=NONE
+
 
 " ==================== MAPPINGS ====================
 
 " Map <C-L> (redraw screen)
 " also turn off search highlighting until the next search
-nnoremap <C-L> :nohl<CR><C-L>                                             
-                             
+nnoremap <C-L> :nohl<CR><C-L>
+
 " Map Control-N to toggle line numbers
-nnoremap <C-N> :set invnumber<CR>     
-                                      
+nnoremap <C-N> :set invnumber<CR>
+
 " Map F5/F6 to toggle tabs
 nnoremap <F6> :tabn<CR>
 nnoremap <F5> :tabp<CR>
+
+" Visual cursor moves over wrapped lines
+nnoremap j gj
+nnoremap k gk

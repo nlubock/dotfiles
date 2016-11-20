@@ -37,13 +37,13 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# Increase Brightness 10%
-"xbacklight -inc 10"
-    XF86MonBrightnessUp
-
-# Increase Brightness 10%
-"xbacklight -dec 10"
-    XF86MonBrightnessDown
+# # Increase Brightness 10%
+# "xbacklight -inc 10"
+#     XF86MonBrightnessUp
+#
+# # Increase Brightness 10%
+# "xbacklight -dec 10"
+#     XF86MonBrightnessDown
 
 ##################################
 # End of xbindkeys configuration #
