@@ -1,0 +1,30 @@
+[user]
+    name = Nathan Lubock
+    email = nate@octant.bio
+
+[init]
+    defaultBranch = main
+
+[core]
+    pager = delta
+    excludesFile = ~/.gitignore_global
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[diff]
+    colorMoved = default
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
