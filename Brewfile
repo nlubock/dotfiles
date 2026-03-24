@@ -17,6 +17,7 @@ brew "duf"          # modern df (disk free space)
 brew "procs"        # modern ps
 brew "sd"           # modern sed
 brew "hyperfine"    # CLI benchmarking
+brew "glow"
 
 # Dotfile management
 brew "stow"         # symlink manager
@@ -34,7 +35,7 @@ brew "oven-sh/bun/bun"          # needed for oh-my-pi + claude-code
 brew "curl"         # HTTP client (brew version stays current)
 brew "jq"           # JSON processor
 brew "delta"        # syntax-highlighting git pager
-brew "tldr"         # simplified man pages
+brew "tealdeer"     # simplified man pages (fast Rust tldr)
 brew "tree"         # directory visualization
 brew "wget"         # file downloader
 brew "shellcheck"   # shell script linter
@@ -48,9 +49,14 @@ cask "spotify"      # music
 cask "obsidian"     # notes
 cask "ghostty"      # terminal
 cask "notion"       # docs & wiki
+cask "stats"        # macOS system monitor menubar
 
 # AI coding agents
 cask "codex"        # OpenAI codex CLI
+brew "gemini-cli"
+
+# R stuff
+brew "air"
 
 # Fonts
 cask "font-fira-code-nerd-font"

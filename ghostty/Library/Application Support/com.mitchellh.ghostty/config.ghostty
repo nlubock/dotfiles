@@ -1,9 +1,11 @@
 font-family = FiraCode Nerd Font
-font-size = 14
+font-size = 16
+
+# font-thicken = true
 
 window-padding-x = 8
 window-padding-y = 8
 
 confirm-close-surface = false
 
-theme = iTerm2 Solarized Light
+theme = Catppuccin Latte
