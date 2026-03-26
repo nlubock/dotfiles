@@ -1,6 +1,9 @@
 # ── Path ──────────────────────────────────────────────
 export PATH="$HOME/.local/bin:$PATH"
 
+# ── Reset Kitty keyboard protocol (prevents CSI u leaking as raw text) ──
+printf '\e[<u'
+
 # ── History ───────────────────────────────────────────
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

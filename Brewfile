@@ -53,6 +53,7 @@ cask "stats"        # macOS system monitor menubar
 
 # AI coding agents
 cask "codex"        # OpenAI codex CLI
+cask "basictex"     # minimal LaTeX for pandoc PDF rendering
 brew "gemini-cli"
 
 # R stuff
