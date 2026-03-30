@@ -1,5 +1,6 @@
 # ── Path ──────────────────────────────────────────────
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 # ── Reset Kitty keyboard protocol (prevents CSI u leaking as raw text) ──
 printf '\e[<u'
@@ -28,7 +29,7 @@ eval "$(zoxide init zsh)"
 
 # ── Aliases ───────────────────────────────────────────
 alias ls="eza --icons --group-directories-first"
-alias ll="eza -la --icons --group-directories-first --git --sort=modified --reverse"
+alias ll="eza -la --icons --group-directories-first --git --sort=modified"
 alias la="eza -la --icons --group-directories-first --git"
 alias tree="eza --tree --icons"
 alias cat="bat --paging=never"
@@ -38,3 +39,5 @@ alias vim="nvim"
 # ── Editor ────────────────────────────────────────────
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+export OPENROUTER_API_KEY=$(security find-generic-password -s "OpenRouter" -a "API_KEY" -w 2>/dev/null)
