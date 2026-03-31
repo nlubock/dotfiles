@@ -2,8 +2,10 @@
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 
-# ── Reset Kitty keyboard protocol (prevents CSI u leaking as raw text) ──
-printf '\e[<u'
+# ── Reset Kitty keyboard protocol (fixes CSI u leak after claude, nvim, etc.) ──
+__reset_kbp() { printf '\e[=0u\e[<10u' }
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd __reset_kbp
 
 # ── History ───────────────────────────────────────────
 HISTFILE=~/.zsh_history
@@ -41,3 +43,4 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 export OPENROUTER_API_KEY=$(security find-generic-password -s "OpenRouter" -a "API_KEY" -w 2>/dev/null)
+fpath+=/opt/homebrew/share/zsh/site-functions
