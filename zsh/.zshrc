@@ -19,6 +19,9 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# ── Light theme hint (for tools like glow inside tmux) ──
+export COLORFGBG="0;15"
+
 # ── Tool init ─────────────────────────────────────────
 # ── FZF Catppuccin Latte ─────────────────────────────
 export FZF_DEFAULT_OPTS=" \
